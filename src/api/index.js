@@ -1,7 +1,13 @@
 import axios from './request'
 
-export const getListAPI = () => {
+export const registerAPI = ({ username, password, repassword }) => {
   return axios({
-    url: 'http://geek.itheima.net/v1_0/channels'
+    url: '/api/reg',
+    method: 'POST',
+    data: {
+      username,
+      password,
+      repassword
+    }
   })
 }
