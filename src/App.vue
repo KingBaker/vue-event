@@ -5,7 +5,10 @@
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  created () {
+    // this.$store.dispatch('initUserInfo')
+  }
 }
 </script>
 <style lang="less">

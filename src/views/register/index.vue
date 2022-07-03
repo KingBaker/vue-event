@@ -29,6 +29,8 @@
 
 <script>
 import { registerAPI } from '@/api'
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'registerIndex',
   data () {
@@ -41,6 +43,7 @@ export default {
       }
     }
     return {
+      // 与后端参数名保持一直好传参
       form: {
         username: '', // 用户名
         password: '', // 密码
@@ -52,7 +55,7 @@ export default {
           { required: true, message: '请输入用户名', trigger: 'blur' }, // 失焦空白校验
           { // 失焦输入内容校验
             pattern: /^[a-zA-Z0-9]{1,10}$/,
-            message: '用户名必须是1-10的大小写字母数字',
+            message: '用户名必须是1-10位的大小写字母数字',
             trigger: 'blur'
           }
         ],
@@ -68,6 +71,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['UPDATE_USERNAME']),
     // 注册的点击事件
     onSubmit () {
       // JS兜底校验 validate
@@ -79,6 +83,7 @@ export default {
           // code为0表示注册成功 "message":"注册成功！" code为1表示注册失败, "message":"用户名被占用，请更换其他用户名！"
           if (res.data.code === 0) {
             console.log(res.data.message)
+            this.UPDATE_USERNAME(this.form.username)
             this.$message.success(res.data.message)
             await this.$router.push('/login')
           } else {
