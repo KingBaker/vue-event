@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {
   Button, Input, Form, FormItem, Link, Message, Container, Header, Aside,
-  Main, Footer, Menu, MenuItem, Submenu, MessageBox
+  Main, Footer, Menu, MenuItem, Submenu, MessageBox, Row, Col
 } from 'element-ui'
 
 Vue.use(Button)
@@ -17,6 +17,8 @@ Vue.use(Footer)
 Vue.use(Menu)
 Vue.use(MenuItem)
 Vue.use(Submenu)
+Vue.use(Row)
+Vue.use(Col)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm

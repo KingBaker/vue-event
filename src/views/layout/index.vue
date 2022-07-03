@@ -40,7 +40,8 @@
           background-color="#23262E"
           text-color="#fff"
           active-text-color="#409EFF"
-          :unique-opened=true>
+          unique-opened
+          router>
           <!-- aside 第一没有孩子-->
           <template v-for="item in asideData">
             <el-menu-item
@@ -69,7 +70,11 @@
       </el-aside>
       <el-container>
         <!-- 页面主体区域 -->
-        <el-main>Main</el-main>
+        <!-- <el-main>出现双滚动条 style="overflow-y: hidden" -->
+        <el-main>
+          <!-- 二级路由挂载点 -->
+          <router-view></router-view>
+        </el-main>
         <!-- 底部 footer 区域 -->
         <el-footer>© www.itheima.com - 黑马程序员</el-footer>
       </el-container>
@@ -112,7 +117,7 @@ export default {
         .then(() => {
           this.$store.commit('UPDATE_TOKEN', '')
           this.$store.commit('UPDATE_USERINFO', {})
-          this.$router.replace('/login')
+          this.$router.push('/login')
         })
         .catch((err) => err)
     }
@@ -133,6 +138,10 @@ export default {
     padding: 0;
   }
   .el-main {
+    //height: 0;
+    //flex-grow: 1;
+    overflow-y: scroll;
+    height: 0;
     background-color: #F2F2F2;
   }
   .el-footer {
@@ -180,8 +189,8 @@ export default {
     user-select: none;
   }
 }
-.quit {
-  //font-size: 16px;
-  //line-height: 18px;
-}
+//.quit {
+//  //font-size: 16px;
+//  //line-height: 18px;
+//}
 </style>
