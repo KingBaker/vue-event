@@ -16,12 +16,13 @@ export default new Vuex.Store({
   },
   getters: {
     // 简写规则: 形参只有一个,return只有一句话时可以简写去掉大括号,和形参小括号
-    nickname (state) {
-      return state.userInfo.nickname
-    },
-    // nickname: state => state.userInfo.nickname, // 昵称
+    // nickname (state) {
+    //   return state.userInfo.nickname
+    // },
+    nickname: state => state.userInfo.nickname, // 昵称
     username: state => state.userInfo.username, // 用户名
     user_pic: state => state.userInfo.user_pic // 用户头像
+    // email: state => state.userInfo.email // 用户邮箱
   },
   mutations: {
     // 1. 更新 token 的 mutation 函数

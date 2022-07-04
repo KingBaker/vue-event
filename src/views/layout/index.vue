@@ -35,7 +35,7 @@
         <!-- unique-opened 无效-->
         <!-- 解决方案是套一个<template></template>-->
         <el-menu
-          default-active="/home"
+          :default-active=$route.path
           class="el-menu-vertical-demo"
           background-color="#23262E"
           text-color="#fff"

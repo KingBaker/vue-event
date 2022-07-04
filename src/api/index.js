@@ -40,6 +40,50 @@ export const getUserinfoAPI = () => {
   })
 }
 
+// 更新-用户基本资料
+/**
+ * 更新-用户基本资料
+ * @param {*} param0 { id: 用户id, email: 用户邮箱, nickname: 用户昵称, user_pic: 用户头像地址, username: 用户名 }
+ * @returns Promise对象
+ */
+export const renewUserInfoAPI = ({ id, email, nickname, userPic, username }) => {
+  return axios({
+    url: '/my/userinfo',
+    method: 'PUT',
+    data: {
+      id,
+      email,
+      nickname,
+      user_pic: userPic,
+      username
+    }
+  })
+}
+
+// 更新-用户头像
+export const userAvatarAPI = (avatar) => {
+  return axios({
+    url: '/my/update/avatar',
+    method: 'PATCH',
+    data: {
+      avatar
+    }
+  })
+}
+
+// 更新-用户密码
+export const userPasswordAPI = ({ oldPwd, newPwd, rePwd }) => {
+  return axios({
+    url: '/my/updatepwd',
+    method: 'PATCH',
+    data: {
+      old_pwd: oldPwd,
+      new_pwd: newPwd,
+      re_pwd: rePwd
+    }
+  })
+}
+
 // 获取-侧边栏数据
 export const asideAPI = () => {
   return axios({
@@ -51,7 +95,7 @@ export const asideAPI = () => {
 }
 
 // 获取-文章分类
-export const articleCategoryAPI = () => {
+export const articleCateAPI = () => {
   return axios({
     url: '/my/cate/list'
   })

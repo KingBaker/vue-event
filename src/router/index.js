@@ -7,7 +7,35 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    component: () => import(/* webpackChuckName: "layout" */ '@/views/layout'),
+    alias: '/layout',
+    redirect: '/home', // 默认显示首页的二级路由
+    children: [
+      {
+        path: 'home',
+        component: () => import(/* webpackChuckName: "layout-home" */ '@/views/home')
+      },
+      {
+        path: 'user-info',
+        component: () => import(/* webpackChuckName: "layout-userInfo" */ '@/views/user/userInfo')
+      },
+      {
+        path: '/user-avatar',
+        component: () => import(/* webpackChuckName: "layout-userAvatar" */ '@/views/user/userAvatar')
+      },
+      {
+        path: '/user-pwd',
+        component: () => import(/* webpackChuckName: "layout-userPwd" */ '@/views/user/userPwd')
+      },
+      {
+        path: '/art-cate',
+        component: () => import(/* webpackChuckName: "layout-artCate */ '@/views/article/artCate')
+      },
+      {
+        path: '/art-list',
+        component: () => import(/* webpackChuckName: "layout-artList */ '@/views/article/artList')
+      }
+    ]
   },
   {
     path: '/reg',
@@ -34,19 +62,19 @@ const routes = [
         next()
       }
     }
-  },
-  {
-    path: '/layout',
-    component: () => import(/* webpackChuckName: "layout" */ '@/views/layout'),
-    redirect: '/home',
-    children: [
-      {
-        // home前要加/,不知道为什么,应该不加的啊...不然空白
-        path: '/home',
-        component: () => import(/* webpackChuckName: "layout-home" */ '@/views/home')
-      }
-    ]
   }
+  // {
+  //   path: '/layout',
+  //   component: () => import(/* webpackChuckName: "layout" */ '@/views/layout'),
+  //   redirect: '/home',
+  //   children: [
+  //     {
+  //       // home前要加/,不知道为什么,应该不加的啊...不然空白
+  //       path: '/home',
+  //       component: () => import(/* webpackChuckName: "layout-home" */ '@/views/home')
+  //     }
+  //   ]
+  // }
 ]
 
 const router = new VueRouter({
