@@ -20,19 +20,19 @@ const routes = [
         component: () => import(/* webpackChuckName: "layout-userInfo" */ '@/views/user/userInfo')
       },
       {
-        path: '/user-avatar',
+        path: 'user-avatar',
         component: () => import(/* webpackChuckName: "layout-userAvatar" */ '@/views/user/userAvatar')
       },
       {
-        path: '/user-pwd',
+        path: 'user-pwd',
         component: () => import(/* webpackChuckName: "layout-userPwd" */ '@/views/user/userPwd')
       },
       {
-        path: '/art-cate',
+        path: 'art-cate',
         component: () => import(/* webpackChuckName: "layout-artCate */ '@/views/article/artCate')
       },
       {
-        path: '/art-list',
+        path: 'art-list',
         component: () => import(/* webpackChuckName: "layout-artList */ '@/views/article/artList')
       }
     ]

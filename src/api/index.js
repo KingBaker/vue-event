@@ -101,6 +101,42 @@ export const articleCateAPI = () => {
   })
 }
 
+// 增加-文章分类
+export const addArticleCateAPI = ({ cateName, cateAlias }) => {
+  return axios({
+    url: '/my/cate/add',
+    method: 'POST',
+    data: {
+      cate_name: cateName,
+      cate_alias: cateAlias
+    }
+  })
+}
+
+// 修改-文章分类
+export const updateCateAPI = ({ id, cateName, cateAlias }) => {
+  return axios({
+    url: '/my/cate/info',
+    method: 'PUT',
+    data: {
+      id,
+      cate_name: cateName,
+      cate_alias: cateAlias
+    }
+  })
+}
+
+// 删除-文章分类
+export const deleteCateAPI = (id) => {
+  return axios({
+    url: '/my/cate/del',
+    method: 'DELETE',
+    params: {
+      id
+    }
+  })
+}
+
 // 获取-文章列表
 export const articleListAPI = () => {
   return axios({

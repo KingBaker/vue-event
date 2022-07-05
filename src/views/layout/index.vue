@@ -16,9 +16,9 @@
             <img src="../../assets/images/myavatar.jpg" alt="avatar" class="avatar">
             <span>个人中心</span>
           </template>
-          <el-menu-item index="1-1"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
-          <el-menu-item index="1-2"><i class="el-icon-camera"></i>更换头像</el-menu-item>
-          <el-menu-item index="1-3"><i class="el-icon-key"></i>重置密码</el-menu-item>
+          <el-menu-item index="1-1" @click="$router.push('user-info')"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
+          <el-menu-item index="1-2" @click="$router.push('user-avatar')"><i class="el-icon-camera"></i>更换头像</el-menu-item>
+          <el-menu-item index="1-3" @click="$router.push('user-pwd')"><i class="el-icon-key"></i>重置密码</el-menu-item>
         </el-submenu>
         <el-menu-item index="2" @click="quitFn"><i class="el-icon-switch-button"></i><span class="quit">退出</span></el-menu-item>
       </el-menu>
@@ -95,7 +95,7 @@ export default {
   },
   async created () {
     const res = await asideAPI()
-    console.log(res)
+    // console.log(res)
     // 侧边栏数据获取成功
     if (res.data.code === 0) {
       this.asideData = res.data.data

@@ -4,7 +4,7 @@ import router from '@/router'
 
 const axios = ajax.create({
   baseURL: 'http://big-event-vue-api-t.itheima.net',
-  timeout: 20000
+  timeout: 10000
 })
 
 // 添加请求拦截器
