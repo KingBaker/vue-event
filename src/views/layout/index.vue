@@ -96,7 +96,7 @@ export default {
   },
   async created () {
     const res = await asideAPI()
-    // console.log(res)
+    console.log(res)
     // 侧边栏数据获取成功
     if (res.data.code === 0) {
       this.asideData = res.data.data

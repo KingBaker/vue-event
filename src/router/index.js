@@ -77,7 +77,7 @@ router.beforeEach(async (to, from, next) => {
   const whiteRouterList = ['/reg', '/login']
   // 有token时除了登录和注册页,其他都能去,给登录和注册设置独享守卫
   if (token) {
-    // 判断当有token,且没有用户id的时候才进行用户资料的请求
+    // 判断当有token,且没有username的时候才进行用户资料的请求
     if (!store.state.userInfo.username) {
       await store.dispatch('initUserInfo')
     }

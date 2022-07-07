@@ -47,6 +47,7 @@ export default {
       // this.avatar = URL.createObjectURL(file[0])
       // console.log(this.avatar)
     },
+    // 上传头像
     async updateAvatarFn () {
       const res = await userAvatarAPI(this.avatar)
       console.log(res)
