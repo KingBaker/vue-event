@@ -7,39 +7,39 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: () => import(/* webpackChuckName: "layout" */ '@/views/layout'),
+    component: () => import(/* webpackChunkName: "Layout" */ '@/views/layout'),
     alias: '/layout',
     redirect: '/home', // 默认显示首页的二级路由
     children: [
       {
         path: 'home',
-        component: () => import(/* webpackChuckName: "layout-home" */ '@/views/home')
+        component: () => import(/* webpackChunkName: "Home" */ '@/views/home')
       },
       {
         path: 'user-info',
-        component: () => import(/* webpackChuckName: "layout-userInfo" */ '@/views/user/userInfo')
+        component: () => import(/* webpackChunkName: "userInfo" */ '@/views/user/userInfo')
       },
       {
         path: 'user-avatar',
-        component: () => import(/* webpackChuckName: "layout-userAvatar" */ '@/views/user/userAvatar')
+        component: () => import(/* webpackChunkName: "userAvatar" */ '@/views/user/userAvatar')
       },
       {
         path: 'user-pwd',
-        component: () => import(/* webpackChuckName: "layout-userPwd" */ '@/views/user/userPwd')
+        component: () => import(/* webpackChunkName: "userPwd" */ '@/views/user/userPwd')
       },
       {
         path: 'art-cate',
-        component: () => import(/* webpackChuckName: "layout-artCate */ '@/views/article/artCate')
+        component: () => import(/* webpackChunkName: "artCate" */ '@/views/article/artCate')
       },
       {
         path: 'art-list',
-        component: () => import(/* webpackChuckName: "layout-artList */ '@/views/article/artList')
+        component: () => import(/* webpackChunkName: "artList" */ '@/views/article/artList')
       }
     ]
   },
   {
     path: '/reg',
-    component: () => import(/* webpackChuckName: "register" */ '@/views/register'),
+    component: () => import(/* webpackChunkName: "Register" */ '@/views/register'),
     // 路由独享守卫注册页
     beforeEnter: (to, from, next) => {
       // 如果已经有了token,不能手动切换到注册页
@@ -52,7 +52,7 @@ const routes = [
   },
   {
     path: '/login',
-    component: () => import(/* webpackChuckName: "login" */ '@/views/login'),
+    component: () => import(/* webpackChunkName: "Login" */ '@/views/login'),
     // 路由独享守卫登录页
     beforeEnter: (to, from, next) => {
       // 如果已经有了token,不能手动切换到登录页
@@ -63,18 +63,6 @@ const routes = [
       }
     }
   }
-  // {
-  //   path: '/layout',
-  //   component: () => import(/* webpackChuckName: "layout" */ '@/views/layout'),
-  //   redirect: '/home',
-  //   children: [
-  //     {
-  //       // home前要加/,不知道为什么,应该不加的啊...不然空白
-  //       path: '/home',
-  //       component: () => import(/* webpackChuckName: "layout-home" */ '@/views/home')
-  //     }
-  //   ]
-  // }
 ]
 
 const router = new VueRouter({

@@ -6,6 +6,8 @@ const axios = ajax.create({
   baseURL: 'http://big-event-vue-api-t.itheima.net',
   timeout: 10000
 })
+// 文章详情中需要基地址
+export const baseURL = 'http://big-event-vue-api-t.itheima.net'
 
 // 添加请求拦截器
 // 注册接口和登录接口不需要携带headers的 Authorization token,所以设置白名单

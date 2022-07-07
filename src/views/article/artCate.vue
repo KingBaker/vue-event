@@ -159,15 +159,24 @@ export default {
       console.log(this.addForm.name + 'kong')
     },
     // 删除分类
-    async deleteFn (id) {
-      const res = await deleteCateAPI(id)
-      console.log(res)
-      if (res.data.code === 0) {
-        this.$message.success(res.data.message)
-        await this.initArticleCateFn()
-      } else {
-        this.$message.error(res.data.message)
-      }
+    deleteFn (id) {
+      // 添加确认弹窗
+      this.$confirm('您确认要删除吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(async () => {
+          const res = await deleteCateAPI(id)
+          console.log(res)
+          if (res.data.code === 0) {
+            this.$message.success(res.data.message)
+            await this.initArticleCateFn()
+          } else {
+            this.$message.error(res.data.message)
+          }
+        })
+        .catch(err => err)
     }
   }
 }

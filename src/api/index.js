@@ -131,22 +131,58 @@ export const deleteCateAPI = (id) => {
   return axios({
     url: '/my/cate/del',
     method: 'DELETE',
-    params: {
-      id
-    }
+    params: { id }
+  })
+}
+
+// 发布-文章
+export const publicArticleAPI = (fd) => {
+  // title, // 文章标题(1-30个任意字符)
+  // cate_id, // 文章分类id
+  // content, // 文章内容
+  // cover_img, // 文章封面
+  // state // 文章状态-只能是"已发布"和"草稿"2个字符串
+  return axios({
+    url: '/my/article/add',
+    method: 'POST',
+    // Body 参数(multipart/form-data) 不能在使用普通的对象,这里要传FormData 表单数据对象
+    data: fd
   })
 }
 
 // 获取-文章列表
-export const articleListAPI = () => {
+export const articleListAPI = ({ pagenum, pagesize, cate_id, state }) => {
+  /*
+  请求参数 位置 query
+  pagenum 当前页码数 必填
+  pagesize  当前页面需要的数据条数 必填
+  cate_id 文章分类id(注意不是文章id)
+  state 文章状态("已发布"和"草稿")2种值
+  */
   return axios({
-    url: '/my/article/list'
-    /*
-      请求参数 位置 query
-      pagenum 当前页码数 必填
-      pagesize  当前页面需要的数据条数 必填
-      cate_id 文章分类id(注意不是文章id)
-      state 文章状态("已发布"和"草稿")2种值
-     */
+    url: '/my/article/list',
+    params: {
+      pagenum,
+      pagesize,
+      cate_id,
+      state
+    }
+  })
+}
+
+// 获取-文章详情
+export const articleDetailAPI = (id) => {
+  return axios({
+    url: '/my/article/info',
+    params: { id }
+  })
+}
+
+// 删除-文章
+export const deleteArticleAPI = (id) => {
+  return axios({
+    url: '/my/article/info',
+    method: 'DELETE',
+    params: { id }
   })
 }

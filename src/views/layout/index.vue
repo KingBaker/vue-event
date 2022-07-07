@@ -13,7 +13,8 @@
         active-text-color="#409EFF">
         <el-submenu index="1">
           <template slot="title">
-            <img src="../../assets/images/myavatar.jpg" alt="avatar" class="avatar">
+            <img :src="user_pic" alt="用户自定义头像" v-if="user_pic" class="avatar">
+            <img src="../../assets/images/myavatar.jpg" alt="默认头像" class="avatar" v-else>
             <span>个人中心</span>
           </template>
           <el-menu-item index="1-1" @click="$router.push('user-info')"><i class="el-icon-s-operation"></i>基本资料</el-menu-item>
